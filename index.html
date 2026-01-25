@@ -4,37 +4,100 @@
   <meta charset="UTF-8">
   <title>Quiz Laura 18</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f2f2f2;
-      padding: 20px;
-    }
-    .container {
-      max-width: 600px;
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-    }
-    button {
-      background: black;
-      color: white;
-      padding: 12px;
-      border: none;
-      border-radius: 6px;
-      width: 100%;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    .codigo {
-      font-size: 24px;
-      text-align: center;
-      font-weight: bold;
-      margin-top: 20px;
-    }
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at top, #7a0019, #0b0b0b);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  max-width: 650px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 0 30px rgba(255, 0, 76, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* detalhes decorativos */
+.container::before {
+  content: "🐆 🍒 💋 🎱 🪩";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 22px;
+  opacity: 0.25;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  text-align: center;
+  color: #7a0019;
+  font-size: 32px;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-weight: 500;
+  color: #2b2b2b;
+  margin-top: 18px;
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+}
+
+button {
+  background: linear-gradient(135deg, #7a0019, #b0002a);
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 30px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(176, 0, 42, 0.6);
+}
+
+.codigo {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  color: #7a0019;
+  margin-top: 25px;
+  letter-spacing: 2px;
+}
+
+#resultado h1 {
+  font-size: 34px;
+}
   </style>
 </head>
 <body>
