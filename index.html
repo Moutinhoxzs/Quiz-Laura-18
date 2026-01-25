@@ -6,18 +6,32 @@
 </head>
 <body>
 
-  <h1>Quiz da Aniversariante 🎉</h1>
+  <h1>Quiz da Laura 🎂</h1>
+  <p>Responda todas as perguntas para receber sua senha de entrada.</p>
 
-  <p>1. Qual é minha comida favorita?</p>
-  <input type="radio" name="q1"> Pizza<br>
-  <input type="radio" name="q1"> Hambúrguer<br>
+  <form id="quiz">
 
-  <p>2. Qual é meu signo?</p>
-  <input type="radio" name="q2"> Leão<br>
-  <input type="radio" name="q2"> Virgem<br>
+    <p>1️⃣ Qual é minha cor favorita?</p>
+    <input type="radio" name="q1" value="a"> Preto<br>
+    <input type="radio" name="q1" value="b"> Rosa<br><br>
 
-  <br>
-  <button>Finalizar</button>
+    <p>2️⃣ Qual dessas eu escolheria?</p>
+    <input type="radio" name="q2" value="a"> Praia<br>
+    <input type="radio" name="q2" value="b"> Sítio<br><br>
+
+    <button type="button" onclick="finalizarQuiz()">Finalizar</button>
+
+  </form>
+
+  <h2 id="codigo"></h2>
+
+  <script>
+    function finalizarQuiz() {
+      const codigo = Math.floor(1000 + Math.random() * 9000);
+      document.getElementById("codigo").innerText =
+        "🎟️ Sua senha é: " + codigo;
+    }
+  </script>
 
 </body>
 </html>
