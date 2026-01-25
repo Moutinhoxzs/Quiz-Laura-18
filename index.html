@@ -6,7 +6,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
+      background: #f2f2f2;
       padding: 20px;
     }
     .container {
@@ -20,17 +20,18 @@
       text-align: center;
     }
     button {
-      background: #000;
+      background: black;
       color: white;
-      padding: 10px;
+      padding: 12px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       width: 100%;
       font-size: 16px;
+      cursor: pointer;
     }
     .codigo {
+      font-size: 24px;
       text-align: center;
-      font-size: 22px;
       font-weight: bold;
       margin-top: 20px;
     }
@@ -41,87 +42,87 @@
 <div class="container" id="quiz">
   <h1>Quiz da Laura 🎉</h1>
 
-  <p>1. Nome completo</p>
-  <input type="text" id="q1">
+  <p>1. Qual é o nome completo da Laura?</p>
+  <input type="text" required>
 
-  <p>2. Cor favorita</p>
-  <input type="radio" name="q2" value="Azul"> Azul<br>
-  <input type="radio" name="q2" value="Amarelo"> Amarelo<br>
-  <input type="radio" name="q2" value="Rosa"> Rosa<br>
-  <input type="radio" name="q2" value="Vermelho"> Vermelho<br>
+  <p>2. Qual é a cor favorita dela?</p>
+  <input type="radio" name="q2"> Azul<br>
+  <input type="radio" name="q2"> Rosa<br>
+  <input type="radio" name="q2"> Vermelho<br>
+  <input type="radio" name="q2"> Amarelo<br>
 
-  <p>3. Comida favorita</p>
-  <input type="radio" name="q3" value="Strogonoff"> Strogonoff<br>
-  <input type="radio" name="q3" value="Pizza"> Pizza<br>
-  <input type="radio" name="q3" value="Hambúrguer"> Hambúrguer<br>
-  <input type="radio" name="q3" value="Lasanha"> Lasanha<br>
+  <p>3. Qual é a comida favorita da Laura?</p>
+  <input type="radio" name="q3"> Hambúrguer<br>
+  <input type="radio" name="q3"> Pizza<br>
+  <input type="radio" name="q3"> Strogonoff<br>
+  <input type="radio" name="q3"> Lasanha<br>
 
-  <p>4. O que mais gosta de fazer durante o dia?</p>
-  <input type="radio" name="q4" value="Ouvir música"> Ouvir música<br>
-  <input type="radio" name="q4" value="Dormir"> Dormir<br>
-  <input type="radio" name="q4" value="Mexer no celular"> Mexer no celular<br>
-  <input type="radio" name="q4" value="Assistir série"> Assistir série<br>
+  <p>4. O que a Laura mais gosta de fazer durante o dia?</p>
+  <input type="radio" name="q4"> Ouvir música<br>
+  <input type="radio" name="q4"> Dormir<br>
+  <input type="radio" name="q4"> Assistir série<br>
+  <input type="radio" name="q4"> Mexer no celular<br>
 
-  <p>5. Data de nascimento</p>
-  <input type="radio" name="q5" value="27/08/2008"> 27/08/2008<br>
-  <input type="radio" name="q5" value="27/07/2008"> 27/07/2008<br>
-  <input type="radio" name="q5" value="28/08/2008"> 28/08/2008<br>
-  <input type="radio" name="q5" value="27/08/2007"> 27/08/2007<br>
+  <p>5. Quando a Laura nasceu?</p>
+  <input type="radio" name="q5"> 27/07/2008<br>
+  <input type="radio" name="q5"> 28/08/2008<br>
+  <input type="radio" name="q5"> 27/08/2007<br>
+  <input type="radio" name="q5"> 27/08/2008<br>
 
-  <p>6. Cidade onde nasceu</p>
-  <input type="radio" name="q6" value="São Paulo"> São Paulo<br>
-  <input type="radio" name="q6" value="Guarulhos"> Guarulhos<br>
-  <input type="radio" name="q6" value="Belo Horizonte"> Belo Horizonte<br>
-  <input type="radio" name="q6" value="Osasco"> Osasco<br>
+  <p>6. Em qual cidade a Laura nasceu?</p>
+  <input type="radio" name="q6"> São Paulo<br>
+  <input type="radio" name="q6"> Guarulhos<br>
+  <input type="radio" name="q6"> Belo Horizonte<br>
+  <input type="radio" name="q6"> Osasco<br>
 
-  <p>7. Signo</p>
-  <input type="radio" name="q7" value="Virgem"> Virgem<br>
-  <input type="radio" name="q7" value="Leão"> Leão<br>
-  <input type="radio" name="q7" value="Libra"> Libra<br>
-  <input type="radio" name="q7" value="Câncer"> Câncer<br>
+  <p>7. Qual é o signo da Laura?</p>
+  <input type="radio" name="q7"> Leão<br>
+  <input type="radio" name="q7"> Libra<br>
+  <input type="radio" name="q7"> Virgem<br>
+  <input type="radio" name="q7"> Câncer<br>
 
-  <p>8. Cantor(a) favorito(a)</p>
-  <input type="radio" name="q8" value="The Weeknd"> The Weeknd<br>
-  <input type="radio" name="q8" value="Bruno Mars"> Bruno Mars<br>
-  <input type="radio" name="q8" value="Rihanna"> Rihanna<br>
-  <input type="radio" name="q8" value="Ariana Grande"> Ariana Grande<br>
+  <p>8. Quem é o cantor favorito da Laura?</p>
+  <input type="radio" name="q8"> Bruno Mars<br>
+  <input type="radio" name="q8"> Rihanna<br>
+  <input type="radio" name="q8"> Ariana Grande<br>
+  <input type="radio" name="q8"> The Weeknd<br>
 
-  <p>9. Time</p>
-  <input type="radio" name="q9" value="Corinthians"> Corinthians<br>
-  <input type="radio" name="q9" value="Palmeiras"> Palmeiras<br>
-  <input type="radio" name="q9" value="São Paulo"> São Paulo<br>
-  <input type="radio" name="q9" value="Flamengo"> Flamengo<br>
+  <p>9. Para qual time a Laura torce?</p>
+  <input type="radio" name="q9"> Palmeiras<br>
+  <input type="radio" name="q9"> Corinthians<br>
+  <input type="radio" name="q9"> São Paulo<br>
+  <input type="radio" name="q9"> Flamengo<br>
 
-  <p>10. Quantos pets?</p>
-  <input type="radio" name="q10" value="Dois"> Dois<br>
-  <input type="radio" name="q10" value="Um"> Um<br>
-  <input type="radio" name="q10" value="Três"> Três<br>
-  <input type="radio" name="q10" value="Nenhum"> Nenhum<br>
+  <p>10. Quantos pets a Laura tem?</p>
+  <input type="radio" name="q10"> Dois<br>
+  <input type="radio" name="q10"> Três<br>
+  <input type="radio" name="q10"> Um<br>
+  <input type="radio" name="q10"> Nenhum<br>
 
-  <p>11. Altura</p>
-  <input type="radio" name="q11" value="1,45"> 1,45<br>
-  <input type="radio" name="q11" value="1,42"> 1,42<br>
-  <input type="radio" name="q11" value="1,53"> 1,53<br>
-  <input type="radio" name="q11" value="1,49"> 1,49<br>
+  <p>11. Qual é a altura da Laura?</p>
+  <input type="radio" name="q11"> 1,42<br>
+  <input type="radio" name="q11"> 1,53<br>
+  <input type="radio" name="q11"> 1,45<br>
+  <input type="radio" name="q11"> 1,49<br>
 
-  <p>12. Traço de personalidade</p>
-  <input type="radio" name="q12" value="Extremamente intensa"> Extremamente intensa com todos os sentimentos<br>
-  <input type="radio" name="q12" value="Um pouco intensa"> Um pouco intensa<br>
-  <input type="radio" name="q12" value="Emocional às vezes"> Emocional às vezes<br>
-  <input type="radio" name="q12" value="Sensível dependendo"> Sensível dependendo do dia<br>
+  <p>12. Qual é o principal traço da personalidade da Laura?</p>
+  <input type="radio" name="q12"> Extremamente intensa com todos os sentimentos<br>
+  <input type="radio" name="q12"> Um pouco intensa<br>
+  <input type="radio" name="q12"> Emocional às vezes<br>
+  <input type="radio" name="q12"> Sensível dependendo do dia<br>
 
-  <p>13. Se algo der errado na festa</p>
-  <input type="radio" name="q13" value="Riria"> Riria e acharia o auge<br>
-  <input type="radio" name="q13" value="Estressada"> Ficaria estressada<br>
-  <input type="radio" name="q13" value="Chorar"> Choraria<br>
-  <input type="radio" name="q13" value="Ir embora"> Iria embora<br>
+  <p>13. Se algo desse errado na festa, o que a Laura faria?</p>
+  <input type="radio" name="q13"> Ficaria estressada<br>
+  <input type="radio" name="q13"> Choraria<br>
+  <input type="radio" name="q13"> Iria embora<br>
+  <input type="radio" name="q13"> Riria e acharia o auge<br>
 
   <br>
   <button onclick="finalizar()">Finalizar</button>
 </div>
 
 <div class="container" id="resultado" style="display:none;">
-  <h1>🎟️ Código de acesso</h1>
+  <h1>🎟️ Seu código</h1>
   <p class="codigo" id="codigo"></p>
 </div>
 
