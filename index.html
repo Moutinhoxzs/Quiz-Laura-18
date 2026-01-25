@@ -1,37 +1,138 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz Laura 18</title>
+<meta charset="UTF-8">
+<title>Quiz da Laura 🎉</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: auto;
+  background: #1c1c1c;
+  padding: 25px;
+  border-radius: 12px;
+}
+
+h1 {
+  color: #ff4d6d;
+}
+
+.question {
+  margin: 20px 0;
+  text-align: left;
+}
+
+button {
+  background: #ff4d6d;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ff1f4a;
+}
+
+.result {
+  margin-top: 25px;
+  font-size: 18px;
+}
+</style>
 </head>
+
 <body>
 
+<div class="container">
   <h1>Quiz da Laura 🎂</h1>
-  <p>Responda todas as perguntas para receber sua senha de entrada.</p>
 
-  <form id="quiz">
+  <form id="quizForm">
 
-    <p>1️⃣ Qual é minha cor favorita?</p>
-    <input type="radio" name="q1" value="a"> Preto<br>
-    <input type="radio" name="q1" value="b"> Rosa<br><br>
+    <div class="question">
+      <p>1. Escreva seu nome:</p>
+      <input type="text" id="nome" required>
+    </div>
 
-    <p>2️⃣ Qual dessas eu escolheria?</p>
-    <input type="radio" name="q2" value="a"> Praia<br>
-    <input type="radio" name="q2" value="b"> Sítio<br><br>
+    <div class="question">
+      <p>2. Onde a Laura nasceu?</p>
+      <input type="radio" name="q2"> Belo Horizonte<br>
+      <input type="radio" name="q2" data-correct="true"> São Paulo<br>
+      <input type="radio" name="q2"> Guarulhos<br>
+      <input type="radio" name="q2"> Osasco
+    </div>
+
+    <div class="question">
+      <p>3. Qual a cor favorita da Laura?</p>
+      <input type="radio" name="q3" data-correct="true"> Azul<br>
+      <input type="radio" name="q3"> Amarelo<br>
+      <input type="radio" name="q3"> Rosa<br>
+      <input type="radio" name="q3"> Vermelho
+    </div>
+
+    <div class="question">
+      <p>4. Artista favorito?</p>
+      <input type="radio" name="q4" data-correct="true"> The Weeknd<br>
+      <input type="radio" name="q4"> Bruno Mars<br>
+      <input type="radio" name="q4"> Rihanna<br>
+      <input type="radio" name="q4"> Ariana Grande
+    </div>
+
+    <div class="question">
+      <p>5. Altura da Laura?</p>
+      <input type="radio" name="q5"> 1,45<br>
+      <input type="radio" name="q5" data-correct="true"> 1,49<br>
+      <input type="radio" name="q5"> 1,42<br>
+      <input type="radio" name="q5"> 1,53
+    </div>
+
+    <div class="question">
+      <p>6. A Laura é mais:</p>
+      <input type="radio" name="q6" data-correct="true"> Extrovertida<br>
+      <input type="radio" name="q6"> Introvertida<br>
+      <input type="radio" name="q6"> Antissocial<br>
+      <input type="radio" name="q6"> Tímida
+    </div>
 
     <button type="button" onclick="finalizarQuiz()">Finalizar</button>
-
   </form>
 
-  <h2 id="codigo"></h2>
+  <div class="result" id="resultado"></div>
+</div>
 
-  <script>
-    function finalizarQuiz() {
-      const codigo = Math.floor(1000 + Math.random() * 9000);
-      document.getElementById("codigo").innerText =
-        "🎟️ Sua senha é: " + codigo;
-    }
-  </script>
+<script>
+function gerarCodigo() {
+  const random = Math.floor(Math.random() * 9000) + 1000;
+  const time = Date.now().toString().slice(-2);
+  return `L18-${random}${time}`;
+}
+
+function finalizarQuiz() {
+  let acertos = 0;
+  document.querySelectorAll('[data-correct="true"]').forEach(op => {
+    if (op.checked) acertos++;
+  });
+
+  const codigo = gerarCodigo();
+
+  document.getElementById("resultado").innerHTML = `
+    <p>🎉 Parabéns!</p>
+    <p>Você acertou <strong>${acertos}</strong> perguntas.</p>
+    <p>Seu código exclusivo é:</p>
+    <h2>${codigo}</h2>
+    <p>Guarde esse código para apresentar na festa 😏</p>
+  `;
+}
+</script>
 
 </body>
 </html>
