@@ -1,114 +1,165 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiz Laura 18</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Quiz da Laura — L18</title>
 
-  <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- FONTES -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonte principal -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- Fonte do código -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
   <style>
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     body {
-      margin: 0;
-      font-family: 'Montserrat', sans-serif;
-      background: #f5f1e8;
-      color: #1a1a1a;
+      min-height: 100vh;
+      font-family: 'Playfair Display', serif;
+      background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://i.imgur.com/Y2qYxZp.png");
+      background-size: cover;
+      background-position: center;
+      color: #fff;
       display: flex;
       justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
     }
 
     .container {
-      max-width: 420px;
       width: 100%;
-      padding: 30px 20px;
+      max-width: 700px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 30px;
       text-align: center;
     }
 
-    h1, h2 {
-      font-family: 'Playfair Display', serif;
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
     }
 
     button {
-      background: #7a0019;
-      color: #fff;
+      padding: 14px 30px;
+      border-radius: 40px;
       border: none;
-      padding: 14px 22px;
-      font-size: 16px;
-      border-radius: 30px;
+      background: #7b001c;
+      color: #fff;
+      font-size: 1rem;
       cursor: pointer;
-      margin-top: 20px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    button:hover {
+      background: #a30025;
+      transform: scale(1.05);
     }
 
     input {
       width: 100%;
-      padding: 12px;
-      margin-top: 15px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-      font-size: 16px;
+      padding: 14px;
+      border-radius: 30px;
+      border: none;
+      margin-bottom: 10px;
+      font-size: 1rem;
+      text-align: center;
     }
 
-    .hidden { display: none; }
+    /* QUIZ */
+    .quiz-box {
+      display: none;
+      width: 100%;
+      animation: fadeIn 0.6s ease;
+    }
 
     .question {
-      margin-top: 30px;
-      animation: fadeSlide 0.5s ease;
+      font-size: 1.2rem;
+      margin-bottom: 25px;
     }
 
-    @keyframes fadeSlide {
-      from { opacity: 0; transform: translateX(30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .option {
-      text-align: left;
-      margin: 12px 0;
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid #7a0019;
-      cursor: pointer;
-    }
-
-    .option input {
-      transform: scale(1.3);
-      margin-right: 10px;
-      accent-color: #7a0019;
-    }
-
-    /* FINAL */
-    .final {
-      min-height: 100vh;
+    .answers {
       display: flex;
       flex-direction: column;
+      gap: 12px;
+    }
+
+    .answer-btn {
+      background: rgba(255,255,255,0.1);
+      border: 2px solid rgba(255,255,255,0.3);
+      padding: 14px;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .answer-btn:hover {
+      background: rgba(255,255,255,0.25);
+    }
+
+    /* RESULTADO */
+    .result {
+      display: none;
+      min-height: 100vh;
+      width: 100%;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
+      animation: fadeIn 1s ease;
     }
 
     .code {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8rem;
       margin: 20px 0;
+      letter-spacing: 4px;
     }
 
+    /* FAIXA ONCINHA */
     .divider {
-      margin: 50px 0 30px;
-      height: 40px;
-      background: repeating-linear-gradient(
-        45deg,
-        #000,
-        #000 10px,
-        #c69c6d 10px,
-        #c69c6d 20px
-      );
-      border-radius: 20px;
+      width: 100%;
+      height: 60px;
+      background: url("https://i.imgur.com/7b1G7aP.png");
+      background-size: cover;
+      margin: 40px 0 20px;
+    }
+
+    .party {
+      display: none;
+      animation: slideUp 1s ease forwards;
     }
 
     .countdown {
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 1.3rem;
+      margin-bottom: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -117,117 +168,131 @@
 
 <div class="container">
 
-  <!-- TELA DE ABERTURA -->
+  <!-- TELA INICIAL -->
   <div id="start">
-    <h1>Você conhece a aniversariante? 🎉❓</h1>
-    <p>Então entre no quiz e descubra. 🎲✨<br>
-    Só quem participa, faz parte da festa. 🎟️🪩</p>
+    <h1>Você conhece a aniversariante? ❓🎉</h1>
+    <p>Então entre no quiz e descubra. 🎲🪩<br>Só quem participa, faz parte da festa. ✨🎟️</p>
 
-    <input id="username" placeholder="Digite seu nome">
-    <small>Esse nome será usado na revelação do vencedor.</small><br>
+    <input type="text" id="name" placeholder="Digite seu nome" required>
+    <p style="font-size:0.8rem; opacity:0.7">Precisamos do nome para identificar o vencedor 😉</p>
 
     <button onclick="startQuiz()">Começar</button>
   </div>
 
   <!-- QUIZ -->
-  <div id="quiz" class="hidden"></div>
+  <div class="quiz-box" id="quiz"></div>
 
-  <!-- FINAL -->
-  <div id="final" class="hidden final">
-    <h2>Sua senha é…</h2>
-    <div class="code" id="code"></div>
-
-    <p>Guarde bem esse código. 🎟️<br>
-    Nos vemos na festa para descobrir o vencedor. 🪩✨</p>
+  <!-- RESULTADO -->
+  <div class="result" id="result">
+    <h1>Seu código é 🎟️</h1>
+    <div class="code" id="finalCode"></div>
+    <p>Guarde bem esse código. Nos vemos na festa para descobrir o vencedor. 🪩✨</p>
 
     <div class="divider"></div>
 
-    <div class="countdown" id="countdown"></div>
-
-    <p><strong>Data:</strong> 29 de agosto</p>
-    <p><strong>Lembrete:</strong><br>
-    Leve sua roupa de banho e sua roupa de cama, caso vá dormir no local. 🛏️🩱✨</p>
-
-    <p>Até lá! ✨</p>
+    <div class="party" id="party">
+      <div class="countdown" id="countdown"></div>
+      <p><strong>📍 Festa:</strong> 29 de agosto</p>
+      <p>Leve sua roupa de banho e sua roupa de cama se for dormir 🛌👙</p>
+      <p style="margin-top:15px;">Até lá!</p>
+    </div>
   </div>
 
 </div>
 
 <script>
-const questions = [
-  {
-    q: "Qual a cor favorita da Laura?",
-    a: ["Amarelo", "Azul", "Rosa", "Vermelho"],
-    c: "Azul"
-  },
-  {
-    q: "Quantos pets ela tem?",
-    a: ["Um", "Dois", "Três", "Quatro"],
-    c: "Dois"
-  },
-  {
-    q: "Qual a altura da Laura?",
-    a: ["1,42", "1,53", "1,45", "1,49"],
-    c: "1,45"
-  }
-];
+  const questions = [
+    {
+      q: "Qual é a cor favorita da Laura?",
+      a: ["Vermelho", "Preto", "Rosa", "Verde"]
+    },
+    {
+      q: "Qual dessas coisas ela mais ama?",
+      a: ["Viajar", "Dormir", "Festa", "Foto"]
+    },
+    {
+      q: "Qual é o signo da Laura?",
+      a: ["Leão", "Áries", "Escorpião", "Libra"]
+    },
+    {
+      q: "Qual bebida combina mais com ela?",
+      a: ["Gin", "Vodka", "Vinho", "Cerveja"]
+    }
+  ];
 
-let index = 0;
+  let current = 0;
 
-function startQuiz() {
-  const name = document.getElementById("username").value.trim();
-  if (!name) return alert("Digite seu nome para continuar");
-  document.getElementById("start").classList.add("hidden");
-  document.getElementById("quiz").classList.remove("hidden");
-  showQuestion();
-}
-
-function showQuestion() {
-  const q = questions[index];
-  const container = document.getElementById("quiz");
-  container.innerHTML = `
-    <div class="question">
-      <h2>${q.q}</h2>
-      ${q.a.sort(() => Math.random() - 0.5).map(opt => `
-        <label class="option">
-          <input type="radio" name="opt" onclick="next()">
-          ${opt}
-        </label>
-      `).join("")}
-    </div>
-  `;
-}
-
-function next() {
-  index++;
-  if (index < questions.length) {
+  function startQuiz() {
+    const name = document.getElementById("name").value.trim();
+    if (!name) {
+      alert("Coloca seu nome 😭");
+      return;
+    }
+    document.getElementById("start").style.display = "none";
+    document.getElementById("quiz").style.display = "block";
     showQuestion();
-  } else {
-    finish();
   }
-}
 
-function finish() {
-  document.getElementById("quiz").classList.add("hidden");
-  document.getElementById("final").classList.remove("hidden");
+  function showQuestion() {
+    const quiz = document.getElementById("quiz");
+    quiz.innerHTML = "";
 
-  const code = "L18-" + Math.floor(1000 + Math.random() * 9000);
-  document.getElementById("code").innerText = code;
-  startCountdown();
-}
+    if (current >= questions.length) {
+      finishQuiz();
+      return;
+    }
 
-function startCountdown() {
-  const eventDate = new Date("2026-08-29T18:00:00");
-  const el = document.getElementById("countdown");
+    const q = document.createElement("div");
+    q.className = "question";
+    q.innerText = questions[current].q;
 
-  setInterval(() => {
-    const now = new Date();
-    const diff = eventDate - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    el.innerText = `Faltam ${days} dias e ${hours} horas pra festa 🎉`;
-  }, 3600000);
-}
+    const answers = document.createElement("div");
+    answers.className = "answers";
+
+    const shuffled = [...questions[current].a].sort(() => Math.random() - 0.5);
+
+    shuffled.forEach(ans => {
+      const btn = document.createElement("div");
+      btn.className = "answer-btn";
+      btn.innerText = ans;
+      btn.onclick = () => {
+        current++;
+        showQuestion();
+      };
+      answers.appendChild(btn);
+    });
+
+    quiz.appendChild(q);
+    quiz.appendChild(answers);
+  }
+
+  function finishQuiz() {
+    document.getElementById("quiz").style.display = "none";
+    document.getElementById("result").style.display = "flex";
+
+    const code = "L18-" + Math.floor(1000 + Math.random() * 9000);
+    document.getElementById("finalCode").innerText = code;
+
+    setTimeout(() => {
+      document.getElementById("party").style.display = "block";
+      startCountdown();
+    }, 1500);
+  }
+
+  function startCountdown() {
+    const target = new Date("2026-08-29T18:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = target - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+
+      document.getElementById("countdown").innerText =
+        `Faltam ${days} dias e ${hours} horas pra festa 🪩🍒`;
+    }, 3600000);
+  }
 </script>
 
 </body>
