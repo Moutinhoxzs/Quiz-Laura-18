@@ -5,37 +5,53 @@
 <title>Quiz Laura 18</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Fontes -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
+
 body{
   font-family:'Montserrat',sans-serif;
   background:#f6efe6;
   color:#2b1a1a;
+}
+
+.screen{
   min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
+  padding:40px 20px;
 }
 
 .container{
   max-width:420px;
   width:100%;
-  padding:25px;
   text-align:center;
 }
 
 h1,h2{
   font-family:'Playfair Display',serif;
+  margin-bottom:25px;
+}
+
+p{
   margin-bottom:20px;
+  line-height:1.6;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #ccc;
+  margin:20px 0;
+  font-size:16px;
 }
 
 button{
   width:100%;
-  padding:14px;
-  margin:10px 0;
+  padding:15px;
   border:none;
   border-radius:30px;
   background:#7a0c1f;
@@ -43,15 +59,8 @@ button{
   font-size:16px;
   cursor:pointer;
 }
-button:hover{opacity:.9}
 
-input{
-  width:100%;
-  padding:12px;
-  margin:15px 0;
-  border-radius:10px;
-  border:1px solid #ccc;
-}
+button:hover{opacity:.9}
 
 .option{
   background:#fff;
@@ -60,98 +69,86 @@ input{
 
 .hidden{display:none}
 
-#result{
-  height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-}
-
 #code{
   font-family:'Playfair Display',serif;
   font-size:48px;
-  margin:20px 0;
   letter-spacing:4px;
-}
-
-.separator{
-  margin:40px 0;
-  padding:15px;
-  background:repeating-linear-gradient(
-    45deg,
-    #c2a16d,
-    #c2a16d 10px,
-    #000 10px,
-    #000 20px
-  );
-  color:#fff;
+  margin:25px 0;
 }
 
 #countdown{
   font-weight:600;
-  margin:15px 0;
+  margin:25px 0;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-
 <!-- TELA INICIAL -->
-<div id="start">
-  <h1>Você conhece a aniversariante? ❓🎉</h1>
-  <p>Então entre no quiz e descubra. 🎲🪩<br><strong>Só quem participa, faz parte da festa. ✨🎟️</strong></p>
-  <input id="playerName" placeholder="Digite seu nome">
-  <small>Seu nome será usado apenas para identificar o vencedor.</small>
-  <button onclick="startQuiz()">Começar</button>
+<div id="start" class="screen">
+  <div class="container">
+    <h1>Você conhece a aniversariante? ❓🎉</h1>
+    <p>
+      Então entre no quiz e descubra. 🎲🪩<br>
+      <strong>Só quem participa, faz parte da festa. ✨🎟️</strong>
+    </p>
+
+    <input id="playerName" placeholder="Digite seu nome">
+    <small>Seu nome será usado apenas para identificar o vencedor.</small>
+
+    <button onclick="startQuiz()">Começar</button>
+  </div>
 </div>
 
 <!-- QUIZ -->
-<div id="quiz" class="hidden">
-  <h2 id="question"></h2>
-  <div id="options"></div>
+<div id="quiz" class="screen hidden">
+  <div class="container">
+    <h2 id="question"></h2>
+    <div id="options"></div>
+  </div>
 </div>
 
 <!-- RESULTADO -->
-<div id="result" class="hidden">
-  <h2>Sua senha exclusiva é:</h2>
-  <div id="code"></div>
-  <p><strong>Guarde bem esse código. 🎟️<br>Nos vemos na festa para descobrir o vencedor. 🪩✨</strong></p>
+<div id="result" class="screen hidden">
+  <div class="container">
+    <h2>Sua senha exclusiva é:</h2>
+    <div id="code"></div>
 
-  <div class="separator">🐆🍒</div>
+    <p><strong>
+      Guarde bem esse código. 🎟️<br>
+      Nos vemos na festa para descobrir o vencedor. 🪩✨
+    </strong></p>
 
-  <div id="countdown"></div>
+    <div id="countdown"></div>
 
-  <p>
-    📅 <strong>29 de agosto</strong><br>
-    📍 Local: a confirmar<br>
-    ⏰ Horário: a confirmar
-  </p>
+    <p>
+      📅 <strong>29 de agosto</strong><br>
+      📍 Local: a confirmar<br>
+      ⏰ Horário: a confirmar
+    </p>
 
-  <p><em>Leve sua roupa de banho e sua roupa de cama se for dormir.</em></p>
+    <p><em>Leve sua roupa de banho e sua roupa de cama se for dormir.</em></p>
 
-  <p><strong>Até lá!</strong></p>
-</div>
-
+    <p><strong>Até lá!</strong></p>
+  </div>
 </div>
 
 <script>
 const questions = [
-  {q:"Qual é o nome completo da Laura?",type:"text",a:"laura moutinho neves"},
-  {q:"Qual é a cor favorita dela?",o:["Amarelo","Azul","Vermelho","Rosa"],a:"Azul"},
-  {q:"Qual é a comida favorita da Laura?",o:["Lasanha","Hambúrguer","Strogonoff","Pizza"],a:"Strogonoff"},
-  {q:"O que a Laura mais gosta de fazer durante o dia?",o:["Assistir séries","Dormir","Ouvir música","Cozinhar"],a:"Ouvir música"},
-  {q:"Qual é a data de nascimento da Laura?",o:["29/08/2007","27/08/2007","29/08/2008","27/08/2008"],a:"27/08/2008"},
-  {q:"Em qual cidade a Laura nasceu?",o:["Belo Horizonte","Osasco","São Paulo","Guarulhos"],a:"São Paulo"},
-  {q:"Qual é o signo da Laura?",o:["Leão","Libra","Virgem","Câncer"],a:"Virgem"},
-  {q:"Quem é o cantor favorito da Laura?",o:["Bruno Mars","Rihanna","The Weeknd","Ariana Grande"],a:"The Weeknd"},
-  {q:"Para qual time a Laura torce?",o:["Palmeiras","São Paulo","Flamengo","Corinthians"],a:"Corinthians"},
-  {q:"Quantos pets a Laura tem?",o:["Um","Três","Dois","Nenhum"],a:"Dois"},
-  {q:"Qual é a altura da Laura?",o:["1,42","1,53","1,45","1,49"],a:"1,45"},
-  {q:"Qual é o principal traço da personalidade da Laura?",o:["Calma e reservada","Sensível, mas controlada","Extremamente intensa com todos os sentimentos","Racional e desapegada"],a:"Extremamente intensa com todos os sentimentos"},
-  {q:"Se algo desse errado na festa, o que a Laura faria?",o:["Ficaria nervosa","Tentaria consertar tudo","Ignoraria","Ou choraria muito ou ia rir muito"],a:"Ou choraria muito ou ia rir muito"}
+  {q:"Qual é o nome completo da Laura?",type:"text"},
+  {q:"Qual é a cor favorita dela?",o:["Amarelo","Azul","Vermelho","Rosa"]},
+  {q:"Qual é a comida favorita da Laura?",o:["Lasanha","Hambúrguer","Strogonoff","Pizza"]},
+  {q:"O que a Laura mais gosta de fazer durante o dia?",o:["Assistir séries","Dormir","Ouvir música","Cozinhar"]},
+  {q:"Qual é a data de nascimento da Laura?",o:["29/08/2007","27/08/2007","29/08/2008","27/08/2008"]},
+  {q:"Em qual cidade a Laura nasceu?",o:["Belo Horizonte","Osasco","São Paulo","Guarulhos"]},
+  {q:"Qual é o signo da Laura?",o:["Leão","Libra","Virgem","Câncer"]},
+  {q:"Quem é o cantor favorito da Laura?",o:["Bruno Mars","Rihanna","The Weeknd","Ariana Grande"]},
+  {q:"Para qual time a Laura torce?",o:["Palmeiras","São Paulo","Flamengo","Corinthians"]},
+  {q:"Quantos pets a Laura tem?",o:["Um","Três","Dois","Nenhum"]},
+  {q:"Qual é a altura da Laura?",o:["1,42","1,53","1,45","1,49"]},
+  {q:"Qual é o principal traço da personalidade da Laura?",o:["Calma e reservada","Sensível, mas controlada","Extremamente intensa com todos os sentimentos","Racional e desapegada"]},
+  {q:"Se algo desse errado na festa, o que a Laura faria?",o:["Ficaria nervosa","Tentaria consertar tudo","Ignoraria","Ou choraria muito ou ia rir muito"]}
 ];
 
 let current = 0;
@@ -185,7 +182,7 @@ function showQuestion(){
 
 function next(){
   current++;
-  if(current<questions.length){
+  if(current < questions.length){
     showQuestion();
   }else{
     finish();
@@ -195,18 +192,21 @@ function next(){
 function finish(){
   quiz.classList.add("hidden");
   result.classList.remove("hidden");
-  document.getElementById("code").innerText = "L18-" + Math.floor(1000+Math.random()*9000);
+  document.getElementById("code").innerText =
+    "L18-" + Math.floor(1000 + Math.random()*9000);
   updateCountdown();
-  setInterval(updateCountdown,3600000);
+  setInterval(updateCountdown, 3600000);
 }
 
 function updateCountdown(){
-  const party=new Date("2026-08-29T00:00:00");
-  const now=new Date();
-  const diff=party-now;
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff/(1000*60*60))%24);
-  countdown.innerText=`Faltam ${d} dias e ${h} horas pra festa`;
+  const partyDate = new Date(2026, 7, 29); // 29 de agosto
+  const now = new Date();
+  const diff = partyDate - now;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff / (1000*60*60)) % 24);
+
+  countdown.innerText = `Faltam ${days} dias e ${hours} horas pra festa`;
 }
 </script>
 
