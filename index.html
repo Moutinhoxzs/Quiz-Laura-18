@@ -3,198 +3,230 @@
 <head>
   <meta charset="UTF-8">
   <title>Quiz Laura 18</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;600&display=swap');
+    * { box-sizing: border-box; }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  background:
-    radial-gradient(circle at top, #7a0019, #0b0b0b);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: #f5f1e8;
+      color: #1a1a1a;
+      display: flex;
+      justify-content: center;
+    }
 
-.container {
-  max-width: 650px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 18px;
-  box-shadow: 0 0 30px rgba(255, 0, 76, 0.35);
-  position: relative;
-  overflow: hidden;
-}
+    .container {
+      max-width: 420px;
+      width: 100%;
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-/* detalhes decorativos */
-.container::before {
-  content: "🐆 🍒 💋 🎱 🪩";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  right: 0;
-  text-align: center;
-  font-size: 22px;
-  opacity: 0.25;
-}
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+    }
 
-h1 {
-  font-family: 'Playfair Display', serif;
-  text-align: center;
-  color: #7a0019;
-  font-size: 32px;
-  margin-bottom: 25px;
-  letter-spacing: 1px;
-}
+    button {
+      background: #7a0019;
+      color: #fff;
+      border: none;
+      padding: 14px 22px;
+      font-size: 16px;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
 
-p {
-  font-weight: 500;
-  color: #2b2b2b;
-  margin-top: 18px;
-}
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
 
-input[type="radio"] {
-  margin-right: 8px;
-}
+    .hidden { display: none; }
 
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  margin-top: 8px;
-}
+    .question {
+      margin-top: 30px;
+      animation: fadeSlide 0.5s ease;
+    }
 
-button {
-  background: linear-gradient(135deg, #7a0019, #b0002a);
-  color: white;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  width: 100%;
-  font-size: 18px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-top: 30px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
 
-button:hover {
-  transform: scale(1.02);
-  box-shadow: 0 0 15px rgba(176, 0, 42, 0.6);
-}
+    .option {
+      text-align: left;
+      margin: 12px 0;
+      padding: 12px;
+      border-radius: 12px;
+      border: 1px solid #7a0019;
+      cursor: pointer;
+    }
 
-.codigo {
-  font-size: 30px;
-  text-align: center;
-  font-weight: bold;
-  color: #7a0019;
-  margin-top: 25px;
-  letter-spacing: 2px;
-}
+    .option input {
+      transform: scale(1.3);
+      margin-right: 10px;
+      accent-color: #7a0019;
+    }
 
-#resultado h1 {
-  font-size: 34px;
-}
+    /* FINAL */
+    .final {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .code {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      margin: 20px 0;
+    }
+
+    .divider {
+      margin: 50px 0 30px;
+      height: 40px;
+      background: repeating-linear-gradient(
+        45deg,
+        #000,
+        #000 10px,
+        #c69c6d 10px,
+        #c69c6d 20px
+      );
+      border-radius: 20px;
+    }
+
+    .countdown {
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="container" id="quiz">
-  <h1>Quiz da Laura 🎉</h1>
+<div class="container">
 
-  <p>1. Qual é o nome completo da Laura?</p>
-  <input type="text" required>
+  <!-- TELA DE ABERTURA -->
+  <div id="start">
+    <h1>Você conhece a aniversariante? 🎉❓</h1>
+    <p>Então entre no quiz e descubra. 🎲✨<br>
+    Só quem participa, faz parte da festa. 🎟️🪩</p>
 
-  <p>2. Qual é a cor favorita dela?</p>
-  <input type="radio" name="q2"> Azul<br>
-  <input type="radio" name="q2"> Rosa<br>
-  <input type="radio" name="q2"> Vermelho<br>
-  <input type="radio" name="q2"> Amarelo<br>
+    <input id="username" placeholder="Digite seu nome">
+    <small>Esse nome será usado na revelação do vencedor.</small><br>
 
-  <p>3. Qual é a comida favorita da Laura?</p>
-  <input type="radio" name="q3"> Hambúrguer<br>
-  <input type="radio" name="q3"> Pizza<br>
-  <input type="radio" name="q3"> Strogonoff<br>
-  <input type="radio" name="q3"> Lasanha<br>
+    <button onclick="startQuiz()">Começar</button>
+  </div>
 
-  <p>4. O que a Laura mais gosta de fazer durante o dia?</p>
-  <input type="radio" name="q4"> Ouvir música<br>
-  <input type="radio" name="q4"> Dormir<br>
-  <input type="radio" name="q4"> Assistir série<br>
-  <input type="radio" name="q4"> Mexer no celular<br>
+  <!-- QUIZ -->
+  <div id="quiz" class="hidden"></div>
 
-  <p>5. Quando a Laura nasceu?</p>
-  <input type="radio" name="q5"> 27/07/2008<br>
-  <input type="radio" name="q5"> 28/08/2008<br>
-  <input type="radio" name="q5"> 27/08/2007<br>
-  <input type="radio" name="q5"> 27/08/2008<br>
+  <!-- FINAL -->
+  <div id="final" class="hidden final">
+    <h2>Sua senha é…</h2>
+    <div class="code" id="code"></div>
 
-  <p>6. Em qual cidade a Laura nasceu?</p>
-  <input type="radio" name="q6"> São Paulo<br>
-  <input type="radio" name="q6"> Guarulhos<br>
-  <input type="radio" name="q6"> Belo Horizonte<br>
-  <input type="radio" name="q6"> Osasco<br>
+    <p>Guarde bem esse código. 🎟️<br>
+    Nos vemos na festa para descobrir o vencedor. 🪩✨</p>
 
-  <p>7. Qual é o signo da Laura?</p>
-  <input type="radio" name="q7"> Leão<br>
-  <input type="radio" name="q7"> Libra<br>
-  <input type="radio" name="q7"> Virgem<br>
-  <input type="radio" name="q7"> Câncer<br>
+    <div class="divider"></div>
 
-  <p>8. Quem é o cantor favorito da Laura?</p>
-  <input type="radio" name="q8"> Bruno Mars<br>
-  <input type="radio" name="q8"> Rihanna<br>
-  <input type="radio" name="q8"> Ariana Grande<br>
-  <input type="radio" name="q8"> The Weeknd<br>
+    <div class="countdown" id="countdown"></div>
 
-  <p>9. Para qual time a Laura torce?</p>
-  <input type="radio" name="q9"> Palmeiras<br>
-  <input type="radio" name="q9"> Corinthians<br>
-  <input type="radio" name="q9"> São Paulo<br>
-  <input type="radio" name="q9"> Flamengo<br>
+    <p><strong>Data:</strong> 29 de agosto</p>
+    <p><strong>Lembrete:</strong><br>
+    Leve sua roupa de banho e sua roupa de cama, caso vá dormir no local. 🛏️🩱✨</p>
 
-  <p>10. Quantos pets a Laura tem?</p>
-  <input type="radio" name="q10"> Dois<br>
-  <input type="radio" name="q10"> Três<br>
-  <input type="radio" name="q10"> Um<br>
-  <input type="radio" name="q10"> Nenhum<br>
+    <p>Até lá! ✨</p>
+  </div>
 
-  <p>11. Qual é a altura da Laura?</p>
-  <input type="radio" name="q11"> 1,42<br>
-  <input type="radio" name="q11"> 1,53<br>
-  <input type="radio" name="q11"> 1,45<br>
-  <input type="radio" name="q11"> 1,49<br>
-
-  <p>12. Qual é o principal traço da personalidade da Laura?</p>
-  <input type="radio" name="q12"> Extremamente intensa com todos os sentimentos<br>
-  <input type="radio" name="q12"> Um pouco intensa<br>
-  <input type="radio" name="q12"> Emocional às vezes<br>
-  <input type="radio" name="q12"> Sensível dependendo do dia<br>
-
-  <p>13. Se algo desse errado na festa, o que a Laura faria?</p>
-  <input type="radio" name="q13"> Ficaria estressada<br>
-  <input type="radio" name="q13"> Choraria<br>
-  <input type="radio" name="q13"> Iria embora<br>
-  <input type="radio" name="q13"> Riria e acharia o auge<br>
-
-  <br>
-  <button onclick="finalizar()">Finalizar</button>
-</div>
-
-<div class="container" id="resultado" style="display:none;">
-  <h1>🎟️ Seu código</h1>
-  <p class="codigo" id="codigo"></p>
 </div>
 
 <script>
-function finalizar() {
-  const codigo = "L18-" + Math.floor(1000 + Math.random() * 9000);
-  document.getElementById("quiz").style.display = "none";
-  document.getElementById("resultado").style.display = "block";
-  document.getElementById("codigo").innerText = codigo;
+const questions = [
+  {
+    q: "Qual a cor favorita da Laura?",
+    a: ["Amarelo", "Azul", "Rosa", "Vermelho"],
+    c: "Azul"
+  },
+  {
+    q: "Quantos pets ela tem?",
+    a: ["Um", "Dois", "Três", "Quatro"],
+    c: "Dois"
+  },
+  {
+    q: "Qual a altura da Laura?",
+    a: ["1,42", "1,53", "1,45", "1,49"],
+    c: "1,45"
+  }
+];
+
+let index = 0;
+
+function startQuiz() {
+  const name = document.getElementById("username").value.trim();
+  if (!name) return alert("Digite seu nome para continuar");
+  document.getElementById("start").classList.add("hidden");
+  document.getElementById("quiz").classList.remove("hidden");
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[index];
+  const container = document.getElementById("quiz");
+  container.innerHTML = `
+    <div class="question">
+      <h2>${q.q}</h2>
+      ${q.a.sort(() => Math.random() - 0.5).map(opt => `
+        <label class="option">
+          <input type="radio" name="opt" onclick="next()">
+          ${opt}
+        </label>
+      `).join("")}
+    </div>
+  `;
+}
+
+function next() {
+  index++;
+  if (index < questions.length) {
+    showQuestion();
+  } else {
+    finish();
+  }
+}
+
+function finish() {
+  document.getElementById("quiz").classList.add("hidden");
+  document.getElementById("final").classList.remove("hidden");
+
+  const code = "L18-" + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById("code").innerText = code;
+  startCountdown();
+}
+
+function startCountdown() {
+  const eventDate = new Date("2026-08-29T18:00:00");
+  const el = document.getElementById("countdown");
+
+  setInterval(() => {
+    const now = new Date();
+    const diff = eventDate - now;
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    el.innerText = `Faltam ${days} dias e ${hours} horas pra festa 🎉`;
+  }, 3600000);
 }
 </script>
 
